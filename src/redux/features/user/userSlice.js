@@ -25,8 +25,24 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers:(builder)=>{
-    builder.addCase(createUser.pending,(state,{payload})=>{
-      
+    builder.addCase(createUser.pending,(state)=>{
+      state.isLoading = true;
+      state.isError = false;
+      state.email = "";
+      state.name = "";
+      state.error = "";
+    }).builder.addCase(createUser.fulfilled,(state,{payload})=>{
+      state.isLoading = false;
+      state.isError = false;
+      state.email = payload.email;
+      state.name = payload.name;
+      state.error = "";
+    }).builder.addCase(createUser.rejected,(state,action)=>{
+      state.isLoading = false;
+      state.isError = false;
+      state.email = "";
+      state.name = "";
+      state.error = action.error.message;
     });
   }
 });
