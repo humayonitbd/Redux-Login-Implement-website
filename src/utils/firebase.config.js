@@ -2,15 +2,14 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBx889HWnONaipKndTamWHJbR12DfuOL08",
-  authDomain: "reduxloginsetup.firebaseapp.com",
-  projectId: "reduxloginsetup",
-  storageBucket: "reduxloginsetup.appspot.com",
-  messagingSenderId: "98098644141",
-  appId: "1:98098644141:web:5c49f11a872bcc76003224"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
